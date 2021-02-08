@@ -4,6 +4,7 @@ import { todoList } from "../index"
 // References HTML
 const divTodoList = document.querySelector('.todo-list');
 const inputTodo = document.querySelector('.new-todo');
+const clearCompletedBtn = document.querySelector('.clear-completed');
 
 
 export const createTodoHtml = (todo) => {
@@ -32,7 +33,34 @@ inputTodo.addEventListener('keyup', (event) => {
     if (event.keyCode === 13 && inputTodo.value !== '') {
         const newTodo = new Todo(inputTodo.value);
         todoList.addTodo(newTodo);
-        createTodoHtml(newTodo)
+        createTodoHtml(newTodo);
         inputTodo.value = '';
+    }
+});
+
+
+divTodoList.addEventListener('click', (event) => {
+    const itemType = event.target.localName;
+    const itemTodoHtml = event.target.parentElement.parentElement;
+    const idTodo = itemTodoHtml.getAttribute('data-id');
+
+    if (itemType === 'input') {
+        todoList.toggleTodo(idTodo);
+        itemTodoHtml.classList.toggle('completed');
+    }
+    if (itemType === 'button') {
+        todoList.removeTodo(idTodo);
+        itemTodoHtml.remove();
+        console.log(todoList);
+    }
+});
+
+clearCompletedBtn.addEventListener('click', () => {
+    todoList.removeCompletedTodos();
+    for (let i = divTodoList.children.length - 1; i >= 0; i--) {
+        const element = divTodoList.children[i];
+        if (element.classList.contains("completed")) {
+            element.remove();
+        }
     }
 })
