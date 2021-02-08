@@ -1,6 +1,6 @@
-# Webpack Starter
+# Todos Webpack
 
-Este es el proyecto inicial para crear aplicaciones utilizando webpack.
+Proyecto creado con el fin del aprendizaje, guiado por Fernando Herrera en Udemy.
 
 ### Notas:
 Recuerden reconstruir los módulos de Node
