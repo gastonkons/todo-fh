@@ -1,4 +1,4 @@
-# Todos Webpack
+# Todos 🗒 con JS, Webpack y Babel
 
 Proyecto creado con el fin del aprendizaje, guiado por Fernando Herrera en Udemy.
 
